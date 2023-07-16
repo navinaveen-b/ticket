@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Ticket</title>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class = "container-fluid">
+    <div class="text-center">
+        <h2>Add New Ticket</h2>
+    </div>
+    <form th:action="@{tickets/save}" method="post" th:object="${ticket}"
+          style="max-width: 500px; margin: 0 auto;">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">ticket title</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{ticketTitle}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">ticket desc</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{ticketDesc}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">created on</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{ticketCreatedOn}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Enabled</label>
+                <div class="col-sm-8">
+                    <input type="checkbox" th:field="*{enabled}" class="form-control"/>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/tickets}]]";
+    }
+</script>
+</body>
+</html>

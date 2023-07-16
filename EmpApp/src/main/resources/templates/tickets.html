@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th= "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Tickets</title>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class = "container-fluid text-center">
+    <div><h2>Manage Tickets</h2></div>
+    <div class="m-3">
+        <a class="h3" th:href="@{/tickets/new}">Add New Ticket</a>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class= "thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>CreatedOn</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="ticket : ${listTickets}">
+                <tr>
+                    <td>[[${ticket.id}]]</td>
+                    <td>[[${ticket.ticketTitle}]]</td>
+                    <td>[[${ticket.ticketDesc}]]</td>
+                    <td>[[${ticket.ticketCreatedOn}]]</td>
+                    <td>
+                        <a class="h4 mr-3" th:href="@{'/tickets/edit/' + ${ticket.id}}">Edit</a>
+                        <a class="h4" th:href="@{'/tickets/delete/' + ${ticket.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
